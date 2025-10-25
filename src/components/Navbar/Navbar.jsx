@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="px-4 py-3 md:px-10 flex items-center justify-between max-w-6xl mx-auto">
+        <nav className="px-4 py-3 md:px-10 flex items-center justify-between max-w-6xl mx-auto relative">
             {/* Logo */}
             <h1 className="text-4xl font-bold text-[#00332C]">GV.</h1>
 
@@ -16,10 +17,16 @@ const Navbar = () => {
                         <a href="#" className="text-[#FF914D] font-semibold">
                             Homepage
                         </a>
-                        <a href="#" className="text-[#00332C] hover:text-[#FF914D] font-semibold">
+                        <a
+                            href="#"
+                            className="text-[#00332C] hover:text-[#FF914D] font-semibold"
+                        >
                             About
                         </a>
-                        <a href="#" className="text-[#00332C] hover:text-[#FF914D] font-semibold">
+                        <a
+                            href="#"
+                            className="text-[#00332C] hover:text-[#FF914D] font-semibold"
+                        >
                             Services
                         </a>
 
@@ -28,8 +35,12 @@ const Navbar = () => {
                                 Portfolio <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-md">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Work 1</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Work 2</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                                    Work 1
+                                </a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                                    Work 2
+                                </a>
                             </div>
                         </div>
 
@@ -38,17 +49,24 @@ const Navbar = () => {
                                 Pages <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-md">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Page 1</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Page 2</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                                    Page 1
+                                </a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                                    Page 2
+                                </a>
                             </div>
                         </div>
 
-                        <a href="#" className="text-[#00332C] hover:text-[#FF914D] font-bold">
+                        <a
+                            href="#"
+                            className="text-[#00332C] hover:text-[#FF914D] font-bold"
+                        >
                             Contact
                         </a>
                     </div>
                     <div>
-                        <button className="bg-[#00332C] text-white px-15 py-3 rounded-full font-semibold hover:bg-[#022721] transition">
+                        <button className="bg-[#00332C] text-white px-12 py-3 rounded-full font-semibold hover:bg-[#022721] transition">
                             Hire Me!
                         </button>
                     </div>
@@ -65,32 +83,53 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Dropdown Menu */}
-            {menuOpen && (
-                <div className="absolute top-20 left-0 w-full bg-white shadow-md rounded-md z-50">
-                    <a
-                        href="#"
-                        className="block bg-[#FF7C3E] text-white px-6 py-3 rounded-t-md font-medium"
+            {/* Animated Mobile Dropdown Menu */}
+            <AnimatePresence>
+                {menuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="absolute top-20 left-0 w-full bg-white shadow-md rounded-md z-50 overflow-hidden"
                     >
-                        Homepage
-                    </a>
-                    <a href="#" className="block px-6 py-3 text-[#00332C]">
-                        About
-                    </a>
-                    <a href="#" className="block px-6 py-3 text-[#00332C]">
-                        Services
-                    </a>
-                    <div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
-                        Portfolio <FiChevronDown />
-                    </div>
-                    <div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
-                        Pages <FiChevronDown />
-                    </div>
-                    <a href="#" className="block px-6 py-3 text-[#00332C]">
-                        Contact
-                    </a>
-                </div>
-            )}
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 font-medium text-[#00332C]"
+                        >
+                            Homepage
+                        </motion.a>
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 text-[#00332C]"
+                        >
+                            About
+                        </motion.a>
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 text-[#00332C]"
+                        >
+                            Services
+                        </motion.a>
+                        <motion.div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
+                            Portfolio <FiChevronDown />
+                        </motion.div>
+                        <motion.div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
+                            Pages <FiChevronDown />
+                        </motion.div>
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 text-[#00332C]"
+                        >
+                            Contact
+                        </motion.a>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };
