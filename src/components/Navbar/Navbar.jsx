@@ -6,7 +6,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="px-4 py-3 md:px-10 flex items-center justify-between max-w-6xl mx-auto relative">
+        <nav className="px-4 py-4 md:px-10 flex items-center justify-between max-w-7xl mx-auto relative">
             {/* Logo */}
             <h1 className="text-4xl font-bold text-[#00332C]">GV.</h1>
 
@@ -14,27 +14,27 @@ const Navbar = () => {
             <div>
                 <div className="hidden md:flex items-center">
                     <div className="hidden md:flex items-center bg-[#E2F89D] px-10 py-3 rounded-full gap-10">
-                        <a href="#" className="text-[#FF914D] font-semibold">
+                        <a href="#" className="text-[#FF914D] text-lg">
                             Homepage
                         </a>
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] font-semibold"
+                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
                         >
                             About
                         </a>
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] font-semibold"
+                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
                         >
                             Services
                         </a>
 
                         <div className="relative group">
-                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] font-semibold">
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-lg">
                                 Portfolio <FiChevronDown />
                             </button>
-                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-md">
+                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
                                 <a href="#" className="block px-4 py-2 hover:bg-gray-100">
                                     Work 1
                                 </a>
@@ -45,10 +45,10 @@ const Navbar = () => {
                         </div>
 
                         <div className="relative group">
-                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] font-semibold">
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-lg">
                                 Pages <FiChevronDown />
                             </button>
-                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-md">
+                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
                                 <a href="#" className="block px-4 py-2 hover:bg-gray-100">
                                     Page 1
                                 </a>
@@ -60,7 +60,7 @@ const Navbar = () => {
 
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] font-bold"
+                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
                         >
                             Contact
                         </a>
@@ -74,7 +74,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center bg-[#E2F89D] pr-4 py-1 rounded-full pl-60">
+            <div className="md:hidden flex items-center bg-[#E2F89D] pr-4 py-1 rounded-full pl-40">
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     className={`text-white bg-[#FF7C3E] w-10 h-10 flex items-center justify-center rounded-full text-2xl`}
