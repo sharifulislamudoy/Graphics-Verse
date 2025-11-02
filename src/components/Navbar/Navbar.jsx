@@ -6,32 +6,32 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="px-4 py-4 md:px-10 flex items-center justify-between max-w-7xl mx-auto relative">
+        <nav className="py-6 flex items-center justify-between w-11/12 mx-auto relative">
             {/* Logo */}
-            <h1 className="text-4xl font-bold text-[#00332C]">GV.</h1>
+            <h1 className="text-5xl font-bold text-[#012F2B]">GV.</h1>
 
             {/* Desktop Menu */}
             <div>
                 <div className="hidden md:flex items-center">
                     <div className="hidden md:flex items-center bg-[#E2F89D] px-10 py-3 rounded-full gap-10">
-                        <a href="#" className="text-[#FF914D] text-lg">
+                        <a href="#" className="text-[#FF914D] px-5 text-2xl">
                             Homepage
                         </a>
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
+                            className="text-[#00332C] hover:text-[#FF914D] px-3 text-2xl"
                         >
                             About
                         </a>
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
+                            className="text-[#00332C] hover:text-[#FF914D] px-3 text-2xl"
                         >
                             Services
                         </a>
 
                         <div className="relative group">
-                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-lg">
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-2xl px-3">
                                 Portfolio <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
@@ -45,7 +45,7 @@ const Navbar = () => {
                         </div>
 
                         <div className="relative group">
-                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-lg">
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-2xl px-3">
                                 Pages <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
@@ -60,13 +60,13 @@ const Navbar = () => {
 
                         <a
                             href="#"
-                            className="text-[#00332C] hover:text-[#FF914D] text-lg"
+                            className="text-[#00332C] hover:text-[#FF914D] text-2xl px-3"
                         >
                             Contact
                         </a>
                     </div>
                     <div>
-                        <button className="bg-[#00332C] text-white px-12 py-3 rounded-full font-semibold hover:bg-[#022721] transition">
+                        <button className="bg-[#00332C] text-white px-15 py-3 rounded-full font-semibold hover:bg-[#022721] transition text-2xl">
                             Hire Me!
                         </button>
                     </div>
