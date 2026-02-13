@@ -1,16 +1,8 @@
 @import "tailwindcss";
-<<<<<<< HEAD
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
 
 body {
     background-color: #eeedeb;
     font-family: 'Helvetica Neue', sans-serif;
 
-=======
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-body {
-    background-color: #F7F5F0;
-    font-family: "Inter", sans-serif;
->>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
 }
