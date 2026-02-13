@@ -6,32 +6,53 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
+<<<<<<< HEAD
         <nav className="px-4 py-4 md:px-6 flex items-center justify-between w-full relative">
+=======
+        <nav className="py-6 flex items-center justify-between w-11/12 mx-auto relative">
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
             {/* Logo */}
-            <h1 className="text-4xl font-bold text-[#00332C]">GV.</h1>
+            <h1 className="text-5xl font-bold text-[#012F2B]">GV.</h1>
 
             {/* Desktop Menu */}
             <div>
                 <div className="hidden md:flex items-center">
+<<<<<<< HEAD
                     <div className="hidden md:flex items-center bg-[#DEF29B]  px-20 py-3 rounded-full gap-10">
                         <a href="#" className="text-[#FF914D] text-xl ">
+=======
+                    <div className="hidden md:flex items-center bg-[#E2F89D] px-10 py-3 rounded-full gap-10">
+                        <a href="#" className="text-[#FF914D] px-5 text-2xl">
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                             Homepage
                         </a>
                         <a
                             href="#"
+<<<<<<< HEAD
                             className="text-black hover:text-[#FF914D] text-xl"
+=======
+                            className="text-[#00332C] hover:text-[#FF914D] px-3 text-2xl"
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                         >
                             About
                         </a>
                         <a
                             href="#"
+<<<<<<< HEAD
                             className="text-black hover:text-[#FF914D] text-xl"
+=======
+                            className="text-[#00332C] hover:text-[#FF914D] px-3 text-2xl"
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                         >
                             Services
                         </a>
 
                         <div className="relative group">
+<<<<<<< HEAD
                             <button className="flex items-center gap-1 text-black hover:text-[#FF914D] text-xl">
+=======
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-2xl px-3">
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                                 Portfolio <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
@@ -45,7 +66,11 @@ const Navbar = () => {
                         </div>
 
                         <div className="relative group">
+<<<<<<< HEAD
                             <button className="flex items-center gap-1 text-black hover:text-[#FF914D] text-xl">
+=======
+                            <button className="flex items-center gap-1 text-[#00332C] hover:text-[#FF914D] text-2xl px-3">
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                                 Pages <FiChevronDown />
                             </button>
                             <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
@@ -60,13 +85,21 @@ const Navbar = () => {
 
                         <a
                             href="#"
+<<<<<<< HEAD
                             className="text-black hover:text-[#FF914D] text-xl"
+=======
+                            className="text-[#00332C] hover:text-[#FF914D] text-2xl px-3"
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                         >
                             Contact
                         </a>
                     </div>
                     <div>
+<<<<<<< HEAD
                         <button className="bg-[#012F2B] text-white px-16 py-3 rounded-full font-semibold hover:bg-[#022721] transition text-xl">
+=======
+                        <button className="bg-[#00332C] text-white px-15 py-3 rounded-full font-semibold hover:bg-[#022721] transition text-2xl">
+>>>>>>> 3e6011e563fdbd86c6be30d0623d43f6ae7a86e1
                             Hire Me!
                         </button>
                     </div>
