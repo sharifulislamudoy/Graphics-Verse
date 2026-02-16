@@ -4,7 +4,7 @@ import image from "../../assets/hero-image.png"
 
 const Hero = () => {
   return (
-    <div className="px-4 py-4 md:px-6 flex items-center justify-between w-full mt-15 gap-">
+    <div className="px-4 py-4 md:px-6 flex items-center justify-between w-full mt-15">
 
       {/* Left Side - Image */}
       <motion.div
