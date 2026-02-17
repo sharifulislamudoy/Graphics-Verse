@@ -4,7 +4,7 @@ import image1 from '../../assets/img-news1.png'
 const News = () => {
     return (
         <div className='px-4 py-4 md:px-6 w-full mt-15'>
-            <h2 className='text-6xl font-semibold text-[#022F2B]'>News & Articles</h2>
+            <h2 className='text-5xl font-semibold text-[#022F2B]'>News & Articles</h2>
             <p className='text-gray-600 text-xl mt-5 md:w-[60%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
             <div className='grid grid-cols-2 gap-20 mt-10'>
                 <div className='flex flex-col'>

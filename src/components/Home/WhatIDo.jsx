@@ -8,7 +8,7 @@ import image5 from '../../assets/Logo-Design.png'
 const WhatIDo = () => {
     return (
         <div className='px-4 py-4 md:px-6 w-full mt-15 '>
-            <h2 className='text-6xl font-semibold text-[#022F2B] text-center'>What I Do?</h2>
+            <h2 className='text-5xl font-semibold text-[#022F2B] text-center'>What I Do?</h2>
             <div className='grid grid-cols-3 gap-8 mt-10'>
                 <div className='flex justify-between flex-col bg-white rounded-4xl p-10  gap-15 '>
                     <div>
