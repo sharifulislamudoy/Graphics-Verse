@@ -8,7 +8,7 @@ const Refreshing = () => {
             <div className='rounded-[3rem] bg-[#DEF29B] p-15'>
                 <div className='grid grid-cols-2 '>
                     <div className=''>
-                        <h2 className='text-5xl font-semibold text-[#022F2B]'>Creative Design with Refreshing Ideas</h2>
+                        <h2 className='text-6xl font-semibold text-[#022F2B]'>Creative Design with Refreshing Ideas</h2>
                     </div>
                     <div className='space-y-13'>
                         <div className='flex justify-between items-center  gap-15 '>

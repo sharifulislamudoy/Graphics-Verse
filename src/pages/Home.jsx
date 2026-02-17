@@ -5,6 +5,7 @@ import WhatIDo from '../components/Home/WhatIDo';
 import Experience from '../components/Home/Experience';
 import Recent from '../components/Home/Recent';
 import ClientReview from '../components/Home/ClientReview';
+import News from '../components/Home/News';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Experience />
             <Recent />
             <ClientReview />
+            <News />
         </div>
     );
 };

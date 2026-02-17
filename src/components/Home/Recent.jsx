@@ -9,7 +9,7 @@ import image6 from '../../assets/img-work6.png'
 const Recent = () => {
     return (
         <div className='px-4 py-4 md:px-6 w-full mt-15'>
-            <h2 className='text-5xl font-semibold text-[#022F2B]'>Recent Works</h2>
+            <h2 className='text-6xl font-semibold text-[#022F2B]'>Recent Works</h2>
             <p className='text-gray-600 text-xl mt-5 md:w-[60%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
             <div className='grid grid-cols-3 gap-8 mt-10'>
                 <div className='flex flex-col'>
