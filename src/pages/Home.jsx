@@ -3,6 +3,7 @@ import Hero from '../components/Home/Hero';
 import Refreshing from '../components/Home/Refreshing';
 import WhatIDo from '../components/Home/WhatIDo';
 import Experience from '../components/Home/Experience';
+import Recent from '../components/Home/Recent';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Refreshing />
             <WhatIDo />
             <Experience />
+            <Recent />
         </div>
     );
 };
