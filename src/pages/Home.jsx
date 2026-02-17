@@ -4,6 +4,7 @@ import Refreshing from '../components/Home/Refreshing';
 import WhatIDo from '../components/Home/WhatIDo';
 import Experience from '../components/Home/Experience';
 import Recent from '../components/Home/Recent';
+import ClientReview from '../components/Home/ClientReview';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <WhatIDo />
             <Experience />
             <Recent />
+            <ClientReview />
         </div>
     );
 };
