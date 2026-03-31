@@ -1,0 +1,16 @@
+{
+  "mission": {
+    "title": "Mission",
+    "description": "To empower brands through innovative design — crafting logos, flyers, and social media visuals that drive engagement."
+  },
+  "vision": {
+    "title": "Vision",
+    "description": "To be the world's trusted creative partner, making exceptional design accessible to every brand, big or small."
+  },
+  "stats": [
+    { "value": 80, "label": "Complete Project", "suffix": "+" },
+    { "value": 10, "label": "Years Experience", "suffix": "+" },
+    { "value": 75, "label": "Happy Clients", "suffix": "+" },
+    { "value": 4,  "label": "Awards Winning", "suffix": "+" }
+  ]
+}
