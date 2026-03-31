@@ -1,93 +1,104 @@
-import React from 'react';
-import image1 from '../../assets/img-work1.png'
-import image2 from '../../assets/img-work2.png'
-import image3 from '../../assets/img-work3.png'
-import image4 from '../../assets/img-work4.png'
-import image5 from '../../assets/img-work5.png'
-import image6 from '../../assets/img-work6.png'
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router';
+import image1 from '../../assets/img-work1.png';
+import image2 from '../../assets/img-work2.png';
+import image3 from '../../assets/img-work3.png';
+import image4 from '../../assets/img-work4.png';
+import image5 from '../../assets/img-work5.png';
+import image6 from '../../assets/img-work6.png';
+import portfolioData from '../../../public/Recent/portfolio.json'; // adjust path
+
+// Map image filenames to actual imports
+const imageMap = {
+  'img-work1.png': image1,
+  'img-work2.png': image2,
+  'img-work3.png': image3,
+  'img-work4.png': image4,
+  'img-work5.png': image5,
+  'img-work6.png': image6,
+};
 
 const Recent = () => {
-    return (
-        <div className='px-4 py-4 md:px-6 w-full mt-15'>
-            <h2 className='text-5xl font-semibold text-[#022F2B]'>Recent Works</h2>
-            <p className='text-gray-600 text-xl mt-5 md:w-[60%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-            <div className='grid grid-cols-3 gap-8 mt-10'>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image1} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Crafting seamless and intuitive digital experiences.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image2} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Telling captivating stories through art and visuals.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image3} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Shaping a brand that stands out and resonates.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image4} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Revolutionizing  user with innovative designs.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image5} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Creating a logo that speaks louder than words.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div>
-                        <img src={image6} alt="vision image" className='rounded-4xl w-full h-auto' />
-                    </div>
-                    <div className='mt-5'>
-                        <h4 className='text-3xl font-semibold '>Designing user-focused and accessible interfaces.</h4>
-                        <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ed do.</p>
-                        <button className='text-[#FF7537] font-semibold text-xl mt-5'>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-            </div>
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-        </div>
-    );
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
+  return (
+    <div className="px-4 py-4 md:px-6 w-full mt-15">
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        {/* Header */}
+        <motion.h2
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]"
+          variants={cardVariants}
+        >
+          Recent Works
+        </motion.h2>
+        <motion.p
+          className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5 md:w-[60%]"
+          variants={cardVariants}
+        >
+          Explore our latest projects that blend creativity with strategy. Each
+          work reflects our commitment to design excellence.
+        </motion.p>
+
+        {/* Portfolio Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10"
+          variants={containerVariants}
+        >
+          {portfolioData.map((item, index) => (
+            <motion.div
+              key={item.slug}
+              className="flex flex-col group"
+              variants={cardVariants}
+              whileHover={{ y: -5 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
+              <div className="overflow-hidden rounded-3xl">
+                <img
+                  src={imageMap[item.image]}
+                  alt={item.heading}
+                  className="rounded-3xl w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 md:mt-5">
+                <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold line-clamp-2">
+                  {item.heading}
+                </h4>
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-2 md:mt-5 line-clamp-2">
+                  {item.description}
+                </p>
+                <Link
+                  to={`/portfolio/${item.slug}`}
+                  className="inline-block text-[#FF7537] font-semibold text-sm sm:text-base md:text-lg mt-3 md:mt-5 hover:text-[#022F2B] transition-colors"
+                >
+                  Learn More →
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 };
 
 export default Recent;

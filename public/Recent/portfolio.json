@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "crafting-seamless-and-intuitive-digital-experiences",
+    "heading": "Crafting seamless and intuitive digital experiences.",
+    "description": "UX research and interface design for a fintech startup.",
+    "image": "img-work1.png",
+    "fullDescription": "We collaborated with a fintech startup to redesign their mobile banking app. The project involved user interviews, wireframing, prototyping, and usability testing. The result was a 40% increase in user retention and a 25% boost in daily active users.",
+    "priceRange": "$8,000 - $12,000",
+    "duration": "3 months",
+    "category": "UX/UI Design"
+  },
+  {
+    "slug": "telling-captivating-stories-through-art-and-visuals",
+    "heading": "Telling captivating stories through art and visuals.",
+    "description": "Brand identity and packaging design for a craft brewery.",
+    "image": "img-work2.png",
+    "fullDescription": "We created a complete brand identity for a new craft brewery, including logo, color palette, typography, and packaging designs. The project also included social media templates and merchandise design.",
+    "priceRange": "$5,000 - $8,000",
+    "duration": "2 months",
+    "category": "Branding & Packaging"
+  },
+  {
+    "slug": "shaping-a-brand-that-stands-out-and-resonates",
+    "heading": "Shaping a brand that stands out and resonates.",
+    "description": "Full branding and website design for a sustainable fashion brand.",
+    "image": "img-work3.png",
+    "fullDescription": "We helped a sustainable fashion brand establish a cohesive brand identity, from logo and visual language to a custom Shopify website. The project included product photography, copywriting, and SEO optimization.",
+    "priceRange": "$10,000 - $15,000",
+    "duration": "4 months",
+    "category": "Branding & Web Design"
+  },
+  {
+    "slug": "revolutionizing-user-with-innovative-designs",
+    "heading": "Revolutionizing user experience with innovative designs.",
+    "description": "E‑commerce platform redesign focusing on conversion optimization.",
+    "image": "img-work4.png",
+    "fullDescription": "We redesigned an e‑commerce platform to improve user flow and conversion rates. Key features included a simplified checkout process, personalized product recommendations, and a modern visual refresh.",
+    "priceRange": "$12,000 - $18,000",
+    "duration": "3 months",
+    "category": "UX/UI & E‑commerce"
+  },
+  {
+    "slug": "creating-a-logo-that-speaks-louder-than-words",
+    "heading": "Creating a logo that speaks louder than words.",
+    "description": "Minimalist logo and brand guidelines for a tech startup.",
+    "image": "img-work5.png",
+    "fullDescription": "We designed a versatile, minimalist logo for a tech startup along with a comprehensive brand guidelines document covering usage, color codes, and typography.",
+    "priceRange": "$3,000 - $5,000",
+    "duration": "1 month",
+    "category": "Logo Design"
+  },
+  {
+    "slug": "designing-user-focused-and-accessible-interfaces",
+    "heading": "Designing user-focused and accessible interfaces.",
+    "description": "Accessibility audit and redesign for a government portal.",
+    "image": "img-work6.png",
+    "fullDescription": "We conducted an accessibility audit for a government portal and implemented WCAG 2.1 AA compliant redesign. The project included keyboard navigation improvements, screen reader compatibility, and high contrast modes.",
+    "priceRange": "$6,000 - $10,000",
+    "duration": "2 months",
+    "category": "Accessibility & UI Design"
+  }
+]
