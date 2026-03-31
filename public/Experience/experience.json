@@ -1,0 +1,25 @@
+{
+  "experiences": [
+    {
+      "year": "2014-2016",
+      "title": "Graphic Designer",
+      "description": "Crafted visual identities, marketing collateral, and brand assets for diverse clients. Collaborated with creative teams to deliver high-quality print and digital designs."
+    },
+    {
+      "year": "2017-2020",
+      "title": "Flyer Designer",
+      "description": "Designed eye-catching flyers, brochures, and promotional materials that boosted client engagement and conversion rates. Specialized in event and product advertising."
+    },
+    {
+      "year": "2021-2025",
+      "title": "Ads Designer",
+      "description": "Created high-impact ad creatives for social media, Google Ads, and display networks. Optimized visuals based on performance data to maximize ROI."
+    }
+  ],
+  "skills": [
+    { "name": "Graphic Designer", "value": 92 },
+    { "name": "UI/UX", "value": 88 },
+    { "name": "Branding", "value": 80 },
+    { "name": "Web Development", "value": 72 }
+  ]
+}

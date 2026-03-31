@@ -1,64 +1,98 @@
-import React from 'react';
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import data from '../../../public/Experience/experience.json'; // adjust path if needed
 
 const Experience = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-    const skills = [
-        { name: "Graphic Designer", value: 92 },
-        { name: "UI/UX", value: 88 },
-        { name: "Branding", value: 80 },
-        { name: "Web Development", value: 72 },
-    ];
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
+  };
 
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
+  };
 
+  return (
+    <div className="px-4 py-4 md:px-6 w-full mt-15">
+      <motion.div
+        ref={ref}
+        className="rounded-2xl md:rounded-[3rem] bg-[#DEF29B] p-6 md:p-15"
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <motion.h2
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B] text-center"
+          variants={itemVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          My Experience and Skills
+        </motion.h2>
 
-    return (
-        <div className='px-4 py-4 md:px-6 w-full mt-15 '>
-            <div className='rounded-[3rem] bg-[#DEF29B] p-15'>
-                <h2 className='text-5xl font-semibold text-[#022F2B] text-center'>My Experience and Skills</h2>
-                <div className='flex justify-between gap-20 mt-20'>
-                    <div className='w-full space-y-10'>
-                        <div>
-                            <p className='text-[#FF7537] text-xl'>2014-2016</p>
-                            <h4 className='text-3xl font-semibold  mt-2'>Graphic Designer</h4>
-                            <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                        <div>
-                            <p className='text-[#FF7537] text-xl'>2017-2020</p>
-                            <h4 className='text-3xl font-semibold  mt-2'>Website Designer</h4>
-                            <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                        <div>
-                            <p className='text-[#FF7537] text-xl'>2021-2025</p>
-                            <h4 className='text-3xl font-semibold  mt-2'>UI/UX Designer</h4>
-                            <p className='text-gray-600 text-xl mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                    </div>
-                    <div className="w-full space-y-10 px-5">
-                        {skills.map((skill, index) => (
-                            <div key={index} className="space-y-6">
-                                {/* Title */}
-                                <h4 className="text-3xl font-semibold text-[#0f2a2a]">
-                                    {skill.name}
-                                </h4>
+        <motion.div
+          className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-20 mt-12 md:mt-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {/* Left side - Experience Timeline */}
+          <div className="w-full space-y-8 lg:space-y-10">
+            {data.experiences.map((exp, index) => (
+              <motion.div
+                key={exp.year}
+                variants={itemVariants}
+                whileHover={{ x: 5 }}
+                transition={{ type: 'spring', stiffness: 400 }}
+              >
+                <p className="text-[#FF7537] text-base sm:text-lg md:text-xl">
+                  {exp.year}
+                </p>
+                <h4 className="text-2xl sm:text-3xl font-semibold mt-2">
+                  {exp.title}
+                </h4>
+                <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
+                  {exp.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
-                                {/* Progress Bar */}
-                                <div className="w-full h-2 bg-white/80 rounded-full overflow-hidden">
-                                    <motion.div
-                                        className="h-full bg-[#FF7537] rounded-full"
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${skill.value}%` }}
-                                        transition={{ duration: 1.4, ease: "easeOut" }}
-                                        viewport={{ once: true }}
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+          {/* Right side - Skills Progress Bars */}
+          <div className="w-full space-y-8 lg:space-y-10 px-2 sm:px-5">
+            {data.skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                variants={itemVariants}
+                className="space-y-3 md:space-y-6"
+              >
+                <h4 className="text-2xl sm:text-3xl font-semibold text-[#0f2a2a]">
+                  {skill.name}
+                </h4>
+                <div className="w-full h-2 bg-white/80 rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full bg-[#FF7537] rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.value}%` }}
+                    transition={{ duration: 1.4, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                  />
                 </div>
-            </div>
-        </div>
-    );
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 };
 
 export default Experience;
