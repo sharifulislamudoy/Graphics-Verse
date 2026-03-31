@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "title": "Ads Designer",
+      "description": "Create engaging ad creatives that capture attention and drive conversions across all digital platforms.",
+      "buttonText": "Learn More"
+    },
+    {
+      "title": "Graphic Design",
+      "description": "From social media visuals to print materials, we design compelling graphics that tell your story.",
+      "buttonText": "Learn More"
+    },
+    {
+      "title": "Branding",
+      "description": "Build a cohesive brand identity with strategic branding solutions that resonate with your audience.",
+      "buttonText": "Learn More"
+    },
+    {
+      "title": "Flyer Designer",
+      "description": "Eye-catching flyer designs that effectively communicate your message and leave a lasting impression.",
+      "buttonText": "Learn More"
+    },
+    {
+      "title": "Logo Design",
+      "description": "Unique and memorable logos that capture your brand's essence and stand out from the competition.",
+      "buttonText": "Learn More"
+    }
+  ],
+  "specialCard": {
+    "subtitle": "Request for more",
+    "title": "Have project?",
+    "buttonText": "Let's Talk!"
+  }
+}
