@@ -4,7 +4,9 @@ import WhatIDo from '../components/Home/WhatIDo';
 import Experience from '../components/Home/Experience';
 import Recent from '../components/Home/Recent';
 import ClientReview from '../components/Home/ClientReview';
-import About from '../components/Home/about';
+import About from '../components/Home/About';
+
+
 
 
 const Home = () => {
