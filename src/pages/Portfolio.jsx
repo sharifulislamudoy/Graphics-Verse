@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router';
-import image1 from '../../assets/img-work1.png';
-import image2 from '../../assets/img-work2.png';
-import image3 from '../../assets/img-work3.png';
-import image4 from '../../assets/img-work4.png';
-import image5 from '../../assets/img-work5.png';
-import image6 from '../../assets/img-work6.png';
-import portfolioData from '../../Recent/portfolio.json'; // adjust path as needed
+import image1 from '../assets/img-work1.png';
+import image2 from '../assets/img-work2.png';
+import image3 from '../assets/img-work3.png';
+import image4 from '../assets/img-work4.png';
+import image5 from '../assets/img-work5.png';
+import image6 from '../assets/img-work6.png';
+import portfolioData from '../Recent/portfolio.json';
 
 const imageMap = {
   'img-work1.png': image1,
@@ -18,55 +18,48 @@ const imageMap = {
   'img-work6.png': image6,
 };
 
-const Recent = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
 
-  // Show only first 3 items
-  const displayedItems = portfolioData.slice(0, 3);
+const cardVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-  };
-
+const Portfolio = () => {
   return (
     <div className="px-4 py-4 md:px-6 w-full mt-15">
       <motion.div
-        ref={ref}
         initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        animate="visible"
         variants={containerVariants}
       >
         {/* Header */}
         <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]"
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B] text-center"
           variants={cardVariants}
         >
-          Recent Works
+          All Works
         </motion.h2>
         <motion.p
-          className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5 md:w-[60%]"
+          className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5 text-center md:w-[60%] mx-auto"
           variants={cardVariants}
         >
-          Explore our latest projects that blend creativity with strategy. Each
-          work reflects our commitment to design excellence.
+          A collection of our finest projects. Each one tells a story of
+          creativity and strategic thinking.
         </motion.p>
 
-        {/* Portfolio Grid */}
+        {/* Full Portfolio Grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10"
           variants={containerVariants}
         >
-          {displayedItems.map((item) => (
+          {portfolioData.map((item) => (
             <motion.div
               key={item.slug}
               className="flex flex-col group"
@@ -98,19 +91,9 @@ const Recent = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* View All Button */}
-        <div className="flex justify-center mt-12">
-          <Link
-            to="/portfolio"
-            className="px-6 py-3 bg-[#FF7537] text-white font-semibold rounded-full hover:bg-[#022F2B] transition-colors text-sm sm:text-base"
-          >
-            View All Portfolio
-          </Link>
-        </div>
       </motion.div>
     </div>
   );
 };
 
-export default Recent;
+export default Portfolio;

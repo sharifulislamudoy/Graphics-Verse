@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router';
 import { motion } from 'framer-motion';
-import portfolioData from '../../public/Recent/portfolio.json';
+import portfolioData from '../Recent/portfolio.json';
 import image1 from '../assets/img-work1.png';
 import image2 from '../assets/img-work2.png';
 import image3 from '../assets/img-work3.png';

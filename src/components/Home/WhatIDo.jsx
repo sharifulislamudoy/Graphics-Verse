@@ -5,7 +5,7 @@ import image2 from '../../assets/graphic-Design.png';
 import image3 from '../../assets/Branding.png';
 import image4 from '../../assets/Web-Design.png';
 import image5 from '../../assets/Logo-Design.png';
-import servicesData from '../../../public/WhatIDo/services.json';
+import servicesData from '../../WhatIDo/services.json';
 
 const WhatIDo = () => {
   const ref = useRef(null);

@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <nav className="px-4 py-4 md:px-6 flex items-center justify-between w-full relative">
+        <nav
+            className={`sticky top-0 z-50 px-4 py-4 md:px-6 flex items-center justify-between w-full relative transition-all duration-300 ${
+                scrolled ? "backdrop-blur-md " : "bg-transparent"
+            }`}
+        >
             {/* Logo */}
             <h1 className="text-4xl font-bold text-[#00332C]">GV.</h1>
 
             {/* Desktop Menu */}
             <div>
                 <div className="hidden md:flex items-center">
-                    <div className="hidden md:flex items-center bg-[#DEF29B]  px-20 py-3 rounded-full gap-10">
-                        <a href="#" className="text-[#FF914D] text-xl ">
+                    <div className="hidden md:flex items-center bg-[#DEF29B] px-20 py-3 rounded-full gap-10">
+                        <a href="#" className="text-[#FF914D] text-xl">
                             Homepage
                         </a>
                         <a
@@ -30,33 +48,21 @@ const Navbar = () => {
                             Services
                         </a>
 
-                        <div className="relative group">
-                            <button className="flex items-center gap-1 text-black hover:text-[#FF914D] text-xl">
-                                Portfolio <FiChevronDown />
-                            </button>
-                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                    Work 1
-                                </a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                    Work 2
-                                </a>
-                            </div>
-                        </div>
+                        {/* Experience - replaced Portfolio dropdown */}
+                        <a
+                            href="#"
+                            className="text-black hover:text-[#FF914D] text-xl"
+                        >
+                            Experience
+                        </a>
 
-                        <div className="relative group">
-                            <button className="flex items-center gap-1 text-black hover:text-[#FF914D] text-xl">
-                                Pages <FiChevronDown />
-                            </button>
-                            <div className="hidden group-hover:block absolute top-full mt-1 left-0 bg-white shadow-md rounded-lg">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                    Page 1
-                                </a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                    Page 2
-                                </a>
-                            </div>
-                        </div>
+                        {/* Portfolio - replaced Pages dropdown */}
+                        <a
+                            href="#"
+                            className="text-black hover:text-[#FF914D] text-xl"
+                        >
+                            Portfolio
+                        </a>
 
                         <a
                             href="#"
@@ -114,12 +120,22 @@ const Navbar = () => {
                         >
                             Services
                         </motion.a>
-                        <motion.div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
-                            Portfolio <FiChevronDown />
-                        </motion.div>
-                        <motion.div className="block px-6 py-3 text-[#00332C] flex items-center gap-1">
-                            Pages <FiChevronDown />
-                        </motion.div>
+                        {/* Experience - replaced Portfolio with chevron */}
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 text-[#00332C]"
+                        >
+                            Experience
+                        </motion.a>
+                        {/* Portfolio - replaced Pages with chevron */}
+                        <motion.a
+                            whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
+                            href="#"
+                            className="block px-6 py-3 text-[#00332C]"
+                        >
+                            Portfolio
+                        </motion.a>
                         <motion.a
                             whileHover={{ backgroundColor: "#FF7C3E", color: "#fff" }}
                             href="#"

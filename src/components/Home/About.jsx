@@ -4,9 +4,9 @@ import { useRef } from 'react';
 import image1 from '../../assets/img-vision.png';
 import image2 from '../../assets/img-mission.png';
 import CountUp from 'react-countup';
-import content from '../../../public/Refreshing/content.json';
+import content from '../../Refreshing/content.json';
 
-const Refreshing = () => {
+const About = () => {
   const { mission, vision, stats } = content;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -51,7 +51,7 @@ const Refreshing = () => {
             animate={isInView ? "visible" : "hidden"}
           >
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]'>
-              Creative Design with Refreshing Ideas
+              About <br />Graphic Verse LLC
             </h2>
           </motion.div>
 
@@ -145,4 +145,4 @@ const Refreshing = () => {
   );
 };
 
-export default Refreshing;
+export default About;

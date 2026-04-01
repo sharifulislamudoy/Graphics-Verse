@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import data from '../../../public/Experience/experience.json'; // adjust path if needed
+import data from '../../Experience/experience.json'; // adjust path if needed
 
 const Experience = () => {
   const ref = useRef(null);
