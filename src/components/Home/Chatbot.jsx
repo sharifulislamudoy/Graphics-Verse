@@ -147,7 +147,7 @@ const Chatbot = () => {
             }));
             history.push({ role: 'user', content: userMessage });
 
-            const response = await fetch('http://localhost:5000/api/chat', {
+            const response = await fetch('https://grahic-verse-server.vercel.app/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
