@@ -21,7 +21,7 @@ const Experience = () => {
   };
 
   return (
-    <div className="px-4 py-4 md:px-6 w-full mt-15">
+    <div id='experience' className="px-4 py-4 md:px-6 w-full mt-15">
       <motion.div
         ref={ref}
         className="rounded-2xl md:rounded-[3rem] bg-[#DEF29B] p-6 md:p-15"

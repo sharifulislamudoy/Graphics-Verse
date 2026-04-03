@@ -7,7 +7,7 @@ import image3 from '../../assets/img-work3.png';
 import image4 from '../../assets/img-work4.png';
 import image5 from '../../assets/img-work5.png';
 import image6 from '../../assets/img-work6.png';
-import portfolioData from '../../Recent/portfolio.json'; // adjust path as needed
+import portfolioData from '../../Recent/portfolio.json';
 
 const imageMap = {
   'img-work1.png': image1,
@@ -39,7 +39,7 @@ const Recent = () => {
   };
 
   return (
-    <div className="px-4 py-4 md:px-6 w-full mt-15">
+    <div id='portfolio' className="px-4 py-4 md:px-6 w-full mt-15">
       <motion.div
         ref={ref}
         initial="hidden"

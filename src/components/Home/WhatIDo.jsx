@@ -10,6 +10,12 @@ import servicesData from '../../WhatIDo/services.json';
 const WhatIDo = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   // Animation variants
   const containerVariants = {
@@ -29,7 +35,7 @@ const WhatIDo = () => {
   const serviceImages = [image1, image2, image3, image4, image5];
 
   return (
-    <div className="px-4 py-4 md:px-6 w-full mt-15">
+    <div id='services' className="px-4 py-4 md:px-6 w-full mt-15">
       <motion.div
         ref={ref}
         initial="hidden"
@@ -88,15 +94,17 @@ const WhatIDo = () => {
           >
             <div>
               <p className="text-white text-lg sm:text-xl">
-                {servicesData.specialCard.subtitle}
+                Request for more
               </p>
               <h4 className="text-2xl sm:text-3xl font-semibold text-white">
-                {servicesData.specialCard.title}
+                Have project?
               </h4>
             </div>
             <div>
-              <button className="px-6 sm:px-10 py-2 sm:py-3 bg-white text-black font-semibold rounded-full text-sm sm:text-base md:text-lg hover:bg-[#022F2B] hover:text-white transition-all">
-                {servicesData.specialCard.buttonText}
+              <button
+                onClick={handleScrollToContact}
+                className="px-6 sm:px-10 py-2 sm:py-3 bg-white text-black font-semibold rounded-full text-sm sm:text-base md:text-lg hover:bg-[#022F2B] hover:text-white transition-all">
+                Let's Talk!
               </button>
             </div>
           </motion.div>

@@ -5,6 +5,8 @@ import Experience from '../components/Home/Experience';
 import Recent from '../components/Home/Recent';
 import ClientReview from '../components/Home/ClientReview';
 import About from '../components/Home/About';
+import Contact from '../components/Home/Contact';
+import Chatbot from '../components/Home/Chatbot';
 
 
 
@@ -18,6 +20,8 @@ const Home = () => {
             <Experience />
             <Recent />
             <ClientReview />
+            <Contact />
+            <Chatbot />
         </div>
     );
 };
