@@ -54,7 +54,7 @@ const Contact = () => {
         });
 
         try {
-            const response = await fetch('https://grahic-verse-server.vercel.app/api/contact/send', {
+            const response = await fetch('https://grahic-verse-server.vercel.app/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
