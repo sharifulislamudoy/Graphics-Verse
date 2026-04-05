@@ -10,7 +10,7 @@ const Hero = () => {
     }
   };
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex flex-col md:flex-row items-center justify-between w-full mt-8 md:mt-12 lg:mt-16 gap-8 md:gap-10 lg:gap-12 mx-auto max-w-7xl">
+    <div id="home" className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex flex-col md:flex-row items-center justify-between w-full mt-8 md:mt-12 lg:mt-16 gap-8 md:gap-10 lg:gap-12 mx-auto max-w-7xl">
       {/* Left Side - Image */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
