@@ -1,12 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import data from '../../Experience/experience.json'; // adjust path if needed
+import defaultData from '../../Experience/experience.json'; // adjust path as needed
 
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  // Animation variants
+  // Initialize with default JSON data
+  const [experiences, setExperiences] = useState(defaultData.experiences);
+  const [skills, setSkills] = useState(defaultData.skills);
+
+  useEffect(() => {
+    fetch("https://grahic-verse-server.vercel.app/api/experience")
+      .then((res) => res.json())
+      .then((data) => {
+        // Only override if DB has actual data (not empty)
+        if (data && data.experiences && data.experiences.length > 0) {
+          setExperiences(data.experiences);
+        }
+        if (data && data.skills && data.skills.length > 0) {
+          setSkills(data.skills);
+        }
+      })
+      .catch((err) => console.error("Failed to load experience data", err));
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,9 +64,9 @@ const Experience = () => {
         >
           {/* Left side - Experience Timeline */}
           <div className="w-full space-y-8 lg:space-y-10">
-            {data.experiences.map((exp, index) => (
+            {experiences.map((exp, index) => (
               <motion.div
-                key={exp.year}
+                key={index}
                 variants={itemVariants}
                 whileHover={{ x: 5 }}
                 transition={{ type: 'spring', stiffness: 400 }}
@@ -68,9 +86,9 @@ const Experience = () => {
 
           {/* Right side - Skills Progress Bars */}
           <div className="w-full space-y-8 lg:space-y-10 px-2 sm:px-5">
-            {data.skills.map((skill, index) => (
+            {skills.map((skill, index) => (
               <motion.div
-                key={skill.name}
+                key={index}
                 variants={itemVariants}
                 className="space-y-3 md:space-y-6"
               >

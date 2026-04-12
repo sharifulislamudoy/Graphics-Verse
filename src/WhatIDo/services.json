@@ -2,28 +2,73 @@
   "services": [
     {
       "title": "Ads Designer",
+      "slug": "ads-designer",
       "description": "Create engaging ad creatives that capture attention and drive conversions across all digital platforms.",
-      "buttonText": "Learn More"
+      "buttonText": "Learn More",
+      "longDescription": "I design high‑conversion ad creatives for social media, display networks, and search campaigns. Every visual is crafted to stop the scroll and communicate your offer clearly.",
+      "features": [
+        "Facebook & Instagram Ads",
+        "Google Display & Discovery Ads",
+        "Animated HTML5 Banners",
+        "A/B Testing Variants"
+      ],
+      "image": "/images/services/ads-designer.jpg"
     },
     {
       "title": "Graphic Design",
+      "slug": "graphic-design",
       "description": "From social media visuals to print materials, we design compelling graphics that tell your story.",
-      "buttonText": "Learn More"
+      "buttonText": "Learn More",
+      "longDescription": "Whether you need daily social posts or a complete brand collateral set, I deliver clean, modern graphics that align with your identity.",
+      "features": [
+        "Social Media Templates",
+        "Brochures & Flyers",
+        "Business Cards",
+        "Event Banners"
+      ],
+      "image": "/images/services/graphic-design.jpg"
     },
     {
       "title": "Branding",
+      "slug": "branding",
       "description": "Build a cohesive brand identity with strategic branding solutions that resonate with your audience.",
-      "buttonText": "Learn More"
+      "buttonText": "Learn More",
+      "longDescription": "A strong brand is more than a logo. I help you define your visual language, voice, and guidelines to stand out consistently.",
+      "features": [
+        "Brand Strategy",
+        "Visual Identity Design",
+        "Brand Guidelines",
+        "Logo & Mark Design"
+      ],
+      "image": "/images/services/branding.jpg"
     },
     {
       "title": "Flyer Designer",
+      "slug": "flyer-designer",
       "description": "Eye-catching flyer designs that effectively communicate your message and leave a lasting impression.",
-      "buttonText": "Learn More"
+      "buttonText": "Learn More",
+      "longDescription": "From event promotion to product launches, I create print‑ready flyers that grab attention and deliver your key information at a glance.",
+      "features": [
+        "Event Flyers",
+        "Product Sheets",
+        "Door Hangers",
+        "Print-Ready Files"
+      ],
+      "image": "/images/services/flyer-designer.jpg"
     },
     {
       "title": "Logo Design",
+      "slug": "logo-design",
       "description": "Unique and memorable logos that capture your brand's essence and stand out from the competition.",
-      "buttonText": "Learn More"
+      "buttonText": "Learn More",
+      "longDescription": "Your logo is the face of your brand. I design custom logos that are simple, versatile, and timeless – perfect for digital and print use.",
+      "features": [
+        "Custom Logo Design",
+        "Multiple Concepts",
+        "Vector Source Files",
+        "Brand Color Palette"
+      ],
+      "image": "/images/services/logo-design.jpg"
     }
   ]
 }

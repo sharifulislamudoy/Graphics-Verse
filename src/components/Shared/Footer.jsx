@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 
-// Animation variants
+// Animation variants (unchanged)
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -26,7 +27,14 @@ const listItemVariants = {
 };
 
 const Footer = () => {
-  const navItems = ['Home', 'About', 'Services', 'Portfolio', 'Pricing', 'Testimonials'];
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Experience', path: '/experience' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   return (
     <div className="px-4 py-8 md:px-6 w-full mt-12 md:mt-16">
@@ -75,24 +83,26 @@ const Footer = () => {
 
           {/* Right Column */}
           <motion.div className="md:w-1/3 lg:w-1/4 flex flex-col items-center md:items-end" variants={itemVariants}>
-            <motion.button
-              className="mt-0 md:mt-0 px-8 md:px-10 py-3 bg-[#FF7536] text-white font-semibold rounded-full text-base md:text-lg shadow-md hover:bg-[#012F2B] hover:text-[#FF7536] transition-all duration-300 w-full md:w-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Start A Project
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                className="mt-0 md:mt-0 px-8 md:px-10 py-3 bg-[#FF7536] text-white font-semibold rounded-full text-base md:text-lg shadow-md hover:bg-[#012F2B] hover:text-[#FF7536] transition-all duration-300 w-full md:w-auto"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Start A Project
+              </motion.button>
+            </Link>
 
             <ul className="mt-8 md:mt-12 space-y-3 md:space-y-4 text-center md:text-right w-full">
               {navItems.map((item, index) => (
                 <motion.li
-                  key={item}
+                  key={item.name}
                   variants={listItemVariants}
                   custom={index}
                   whileHover={{ x: 5, color: '#FF7536' }}
                   className="text-gray-600 text-lg md:text-xl cursor-pointer hover:text-[#FF7536] transition-colors duration-300 md:ml-18 text-left"
                 >
-                  {item}
+                  <Link to={item.path}>{item.name}</Link>
                 </motion.li>
               ))}
             </ul>

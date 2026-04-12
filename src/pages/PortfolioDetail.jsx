@@ -1,26 +1,34 @@
-import React from 'react';
+// src/pages/PortfolioDetail.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router';
 import { motion } from 'framer-motion';
-import portfolioData from '../Recent/portfolio.json';
-import image1 from '../assets/img-work1.png';
-import image2 from '../assets/img-work2.png';
-import image3 from '../assets/img-work3.png';
-import image4 from '../assets/img-work4.png';
-import image5 from '../assets/img-work5.png';
-import image6 from '../assets/img-work6.png';
-
-const imageMap = {
-  'img-work1.png': image1,
-  'img-work2.png': image2,
-  'img-work3.png': image3,
-  'img-work4.png': image4,
-  'img-work5.png': image5,
-  'img-work6.png': image6,
-};
+import defaultPortfolioData from '../Recent/portfolio.json';
 
 const PortfolioDetail = () => {
   const { slug } = useParams();
-  const project = portfolioData.find(p => p.slug === slug);
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetch('https://grahic-verse-server.vercel.app/api/portfolio')
+      .then(res => res.json())
+      .then(data => {
+        const items = data?.items || defaultPortfolioData;
+        const found = items.find(p => p.slug === slug);
+        setProject(found || null);
+        setLoading(false);
+      })
+      .catch(() => {
+        const found = defaultPortfolioData.find(p => p.slug === slug);
+        setProject(found || null);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   if (!project) {
     return <Navigate to="/" replace />;
@@ -33,16 +41,14 @@ const PortfolioDetail = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {/* Project Image */}
         <div className="rounded-3xl overflow-hidden mb-8">
           <img
-            src={imageMap[project.image]}
+            src={project.image}
             alt={project.heading}
             className="w-full h-auto max-h-[500px] object-cover"
           />
         </div>
 
-        {/* Project Info */}
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h1 className="text-3xl md:text-5xl font-semibold text-[#022F2B] mb-4">
