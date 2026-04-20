@@ -1,13 +1,13 @@
-// src/components/admin/AboutEditor.jsx
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import defaultMissionImg from "../../assets/img-vision.png";  // fallback mission image
-import defaultVisionImg from "../../assets/img-mission.png"; // fallback vision image
+import defaultMissionImg from "../../assets/img-vision.png";
+import defaultVisionImg from "../../assets/img-mission.png";
 
 const CLOUD_NAME = "dohhfubsa";
 const UPLOAD_PRESET = "react_unsigned";
 
 const AboutEditor = () => {
+  const [brandDescription, setBrandDescription] = useState("");
   const [mission, setMission] = useState({
     title: "",
     description: "",
@@ -32,6 +32,7 @@ const AboutEditor = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.mission) {
+          setBrandDescription(data.brandDescription || "");
           setMission({
             title: data.mission.title || "",
             description: data.mission.description || "",
@@ -95,7 +96,7 @@ const AboutEditor = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ mission, vision, stats }),
+        body: JSON.stringify({ brandDescription, mission, vision, stats }),
       });
       const data = await res.json();
       setMessage(data.message || "Saved!");
@@ -110,7 +111,24 @@ const AboutEditor = () => {
     <div className="max-w-6xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-[#022F2B]">Edit About Section</h1>
 
-      {/* Editor Forms */}
+      {/* Brand Description Editor */}
+      <div className="bg-white rounded-2xl p-6 shadow-sm space-y-5">
+        <h2 className="font-semibold text-gray-700 text-lg">Brand Description</h2>
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Company Overview (shown next to "About Graphic Verse LLC" heading)
+          </label>
+          <textarea
+            value={brandDescription}
+            onChange={(e) => setBrandDescription(e.target.value)}
+            rows={4}
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF7536] resize-none"
+            placeholder="At Graphicverse LLC, we believe design is more than just visuals..."
+          />
+        </div>
+      </div>
+
+      {/* Mission Editor */}
       <div className="bg-white rounded-2xl p-6 shadow-sm space-y-5">
         <h2 className="font-semibold text-gray-700 text-lg">Mission</h2>
         <div>
@@ -152,6 +170,7 @@ const AboutEditor = () => {
         </div>
       </div>
 
+      {/* Vision Editor */}
       <div className="bg-white rounded-2xl p-6 shadow-sm space-y-5">
         <h2 className="font-semibold text-gray-700 text-lg">Vision</h2>
         <div>
@@ -258,21 +277,21 @@ const AboutEditor = () => {
         {saving ? "Saving..." : "Save Changes"}
       </motion.button>
 
-      {/* ========= LIVE PREVIEW SECTION ========= */}
+      {/* LIVE PREVIEW SECTION */}
       <div className="bg-white rounded-2xl p-6 shadow-sm">
         <h2 className="font-semibold text-gray-700 text-lg mb-4">Live Preview</h2>
         <div className="border border-dashed border-gray-200 rounded-xl overflow-hidden">
-          {/* Exact same layout as frontend About component */}
           <div className="rounded-2xl md:rounded-[3rem] bg-[#DEF29B] p-6 md:p-15">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Left side heading */}
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]">
                   About <br />Graphic Verse LLC
                 </h2>
+                <p className="text-gray-700 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
+                  {brandDescription || "At Graphicverse LLC, we believe design is more than just visuals, it is a powerful tool to communicate, connect, and convert. We are a creative design studio specializing in high-impact digital graphics tailored for modern brands. From social media ads to web banners and marketing creatives, our focus is simple: create designs that not only look great but also deliver real results."}
+                </p>
               </div>
 
-              {/* Right side mission & vision */}
               <div className="space-y-8 lg:space-y-13">
                 {/* Mission Block */}
                 <div className="flex flex-col md:flex-row items-center gap-6 md:gap-15">
@@ -322,7 +341,6 @@ const AboutEditor = () => {
                   </div>
                 ))
               ) : (
-                // Show placeholder if no stats
                 <>
                   <div className="text-center"><p className="text-5xl font-semibold text-[#FF7537]">80+</p><p className="text-sm">Complete Project</p></div>
                   <div className="text-center"><p className="text-5xl font-semibold text-[#FF7537]">10+</p><p className="text-sm">Years Experience</p></div>

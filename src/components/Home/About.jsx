@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
-import defaultImage1 from "../../assets/img-vision.png"; // fallback mission image
-import defaultImage2 from "../../assets/img-mission.png"; // fallback vision image
+import defaultImage1 from "../../assets/img-vision.png";
+import defaultImage2 from "../../assets/img-mission.png";
 
 const About = () => {
   const [aboutData, setAboutData] = useState({
+    brandDescription: "At Graphicverse LLC, we believe design is more than just visuals, it is a powerful tool to communicate, connect, and convert. We are a creative design studio specializing in high-impact digital graphics tailored for modern brands. From social media ads to web banners and marketing creatives, our focus is simple: create designs that not only look great but also deliver real results.",
     mission: {
       title: "Mission",
-      description: "To empower brands through innovative design...",
+      description: "To empower brands through innovative design — crafting logos, flyers, and social media visuals that drive engagement.",
       imageUrl: "",
     },
     vision: {
       title: "Vision",
-      description: "To be the world's trusted creative partner...",
+      description: "To be the world's trusted creative partner, making exceptional design accessible to every brand, big or small.",
       imageUrl: "",
     },
     stats: [
@@ -70,6 +71,10 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]">
               About <br />Graphic Verse LLC
             </h2>
+            {/* New Brand Description */}
+            <p className="text-gray-700 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
+              {aboutData.brandDescription}
+            </p>
           </motion.div>
 
           <motion.div
