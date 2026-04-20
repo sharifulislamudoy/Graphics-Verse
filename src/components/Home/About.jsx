@@ -25,6 +25,7 @@ const About = () => {
     ],
   });
 
+  const [loading, setLoading] = useState(true);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -36,7 +37,8 @@ const About = () => {
           setAboutData(data);
         }
       })
-      .catch((err) => console.error("Failed to load about data:", err));
+      .catch((err) => console.error("Failed to load about data:", err))
+      .finally(() => setLoading(false));
   }, []);
 
   const containerVariants = {
@@ -57,6 +59,67 @@ const About = () => {
     visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
   };
 
+  // Improved Skeleton component that matches the #DEF29B background
+  const Skeleton = () => (
+    <div className="animate-pulse">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* Left column skeleton */}
+        <div>
+          <div className="h-10 sm:h-12 lg:h-14 bg-[#b8d46a] rounded w-3/4 mb-6"></div>
+          <div className="space-y-3">
+            <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
+            <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
+            <div className="h-4 bg-[#b8d46a] rounded w-4/5"></div>
+            <div className="h-4 bg-[#b8d46a] rounded w-3/4"></div>
+          </div>
+        </div>
+
+        {/* Right column skeleton (Mission & Vision) */}
+        <div className="space-y-8 lg:space-y-13">
+          {/* Mission skeleton */}
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-15">
+            <div className="w-full md:w-1/2">
+              <div className="rounded-2xl bg-[#b8d46a] h-48 md:h-56 w-full"></div>
+            </div>
+            <div className="w-full md:w-1/2">
+              <div className="h-7 bg-[#b8d46a] rounded w-20 mb-3"></div>
+              <div className="space-y-2">
+                <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
+                <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
+                <div className="h-4 bg-[#b8d46a] rounded w-4/5"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Vision skeleton */}
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-15">
+            <div className="w-full md:w-1/2">
+              <div className="rounded-2xl bg-[#b8d46a] h-48 md:h-56 w-full"></div>
+            </div>
+            <div className="w-full md:w-1/2">
+              <div className="h-7 bg-[#b8d46a] rounded w-16 mb-3"></div>
+              <div className="space-y-2">
+                <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
+                <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
+                <div className="h-4 bg-[#b8d46a] rounded w-3/4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats skeleton */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 mt-12 md:mt-20">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="text-center">
+            <div className="h-8 md:h-12 bg-[#b8d46a] rounded w-16 mx-auto mb-2"></div>
+            <div className="h-4 bg-[#b8d46a] rounded w-20 mx-auto"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div id="about" className="px-4 py-4 md:px-6 w-full mt-15">
       <motion.div
@@ -66,86 +129,91 @@ const About = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <motion.div variants={itemVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]">
-              About <br />Graphic Verse LLC
-            </h2>
-            {/* New Brand Description */}
-            <p className="text-gray-700 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
-              {aboutData.brandDescription}
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="space-y-8 lg:space-y-13"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {/* Mission */}
-            <motion.div
-              className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
-                <img
-                  src={aboutData.mission.imageUrl || defaultImage1}
-                  alt="mission illustration"
-                  className="rounded-2xl w-full h-auto object-cover"
-                />
-              </motion.div>
-              <div className="w-full md:w-1/2 text-center md:text-left">
-                <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.mission.title}</h4>
-                <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
-                  {aboutData.mission.description}
+        {loading ? (
+          <Skeleton />
+        ) : (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <motion.div variants={itemVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]">
+                  About <br />Graphic Verse LLC
+                </h2>
+                <p className="text-gray-700 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
+                  {aboutData.brandDescription}
                 </p>
-              </div>
-            </motion.div>
-
-            {/* Vision */}
-            <motion.div
-              className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
-                <img
-                  src={aboutData.vision.imageUrl || defaultImage2}
-                  alt="vision illustration"
-                  className="rounded-2xl w-full h-auto object-cover"
-                />
               </motion.div>
-              <div className="w-full md:w-1/2 text-center md:text-left">
-                <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.vision.title}</h4>
-                <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
-                  {aboutData.vision.description}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
 
-        {/* Stats */}
-        <motion.div
-          className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 mt-12 md:mt-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {aboutData.stats.map((stat, index) => (
-            <motion.div key={index} variants={statVariants} whileHover={{ y: -5 }} className="text-center">
-              <p className="text-2xl md:text-5xl text-[#FF7537] font-semibold">
-                <CountUp start={0} end={stat.value} duration={5} />
-                {stat.suffix}
-              </p>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-1 md:mt-2">{stat.label}</p>
+              <motion.div
+                className="space-y-8 lg:space-y-13"
+                variants={containerVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+              >
+                {/* Mission */}
+                <motion.div
+                  className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
+                    <img
+                      src={aboutData.mission.imageUrl || defaultImage1}
+                      alt="mission illustration"
+                      className="rounded-2xl w-full h-auto object-cover"
+                    />
+                  </motion.div>
+                  <div className="w-full md:w-1/2 text-center md:text-left">
+                    <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.mission.title}</h4>
+                    <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
+                      {aboutData.mission.description}
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Vision */}
+                <motion.div
+                  className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
+                    <img
+                      src={aboutData.vision.imageUrl || defaultImage2}
+                      alt="vision illustration"
+                      className="rounded-2xl w-full h-auto object-cover"
+                    />
+                  </motion.div>
+                  <div className="w-full md:w-1/2 text-center md:text-left">
+                    <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.vision.title}</h4>
+                    <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
+                      {aboutData.vision.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Stats */}
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 mt-12 md:mt-20"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              {aboutData.stats.map((stat, index) => (
+                <motion.div key={index} variants={statVariants} whileHover={{ y: -5 }} className="text-center">
+                  <p className="text-2xl md:text-5xl text-[#FF7537] font-semibold">
+                    <CountUp start={0} end={stat.value} duration={5} />
+                    {stat.suffix}
+                  </p>
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-1 md:mt-2">{stat.label}</p>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </>
+        )}
       </motion.div>
     </div>
   );
