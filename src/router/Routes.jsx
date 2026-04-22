@@ -20,6 +20,7 @@ import AboutPage from "../pages/AboutPage";
 import ServicesPage from "../pages/ServicesPage";
 import ExperiencePage from "../pages/ExperiencePage";
 import ContactPage from "../pages/ContactPage";
+import CustomCursor from "../CustomCursor/CustomCursor";
 
 export const router = createBrowserRouter([
   // Public routes (with Navbar/Footer)
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       <>
         <Main />
         <ScrollToTop />
+        <CustomCursor />
       </>
     ),
     children: [
