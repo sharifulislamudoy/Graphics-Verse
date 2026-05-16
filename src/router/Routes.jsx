@@ -1,4 +1,3 @@
-// src/router.jsx
 import { createBrowserRouter, Navigate } from "react-router";
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
@@ -21,6 +20,8 @@ import ServicesPage from "../pages/ServicesPage";
 import ExperiencePage from "../pages/ExperiencePage";
 import ContactPage from "../pages/ContactPage";
 import CustomCursor from "../CustomCursor/CustomCursor";
+import PrivacyPolicy from "../pages/PrivacyPolicy";          // <-- new
+import TermsAndConditions from "../pages/TermsAndConditions"; // <-- new
 
 export const router = createBrowserRouter([
   // Public routes (with Navbar/Footer)
@@ -42,6 +43,8 @@ export const router = createBrowserRouter([
       { path: "portfolio", Component: Portfolio },
       { path: "portfolio/:slug", Component: PortfolioDetail },
       { path: "contact", Component: ContactPage },
+      { path: "privacy-policy", Component: PrivacyPolicy },        // <-- new
+      { path: "terms-and-conditions", Component: TermsAndConditions }, // <-- new
     ],
   },
   // Admin routes

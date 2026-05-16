@@ -109,7 +109,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Copyright */}
+        {/* Copyright + Legal Links */}
         <motion.div
           className="mt-12 md:mt-16 pt-8 border-t border-[#022F2B]/20 text-center"
           variants={itemVariants}
@@ -121,6 +121,22 @@ const Footer = () => {
           >
             COPYRIGHT © Graphic Verse LLC 2026. ALL RIGHTS RESERVED
           </motion.h5>
+
+          {/* Legal links added here */}
+          <div className="flex justify-center gap-6 mt-4">
+            <Link
+              to="/privacy-policy"
+              className="text-gray-600 hover:text-[#FF7536] transition-colors text-sm sm:text-base"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms-and-conditions"
+              className="text-gray-600 hover:text-[#FF7536] transition-colors text-sm sm:text-base"
+            >
+              Terms of Service
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
     </div>
