@@ -256,6 +256,41 @@ const Contact = () => {
                         className="space-y-8"
                         variants={containerVariants}
                     >
+                        {/* Our Address Card */}
+                        <motion.div
+                            className="rounded-3xl p-6 md:p-8 border border-gray-200"
+                            variants={itemVariants}
+                            whileHover={{ y: -5 }}
+                            transition={{ type: 'spring', stiffness: 300 }}
+                        >
+                            <h3 className="text-xl font-semibold text-[#022F2B] mb-4 flex items-center gap-2">
+                                {/* Location Icon */}
+                                <svg className="w-5 h-5 text-[#FF7537]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Our Address
+                            </h3>
+                            <div className="text-gray-600">
+                                <p className="leading-relaxed">
+                                    1209 Mountain Road PI NE Ste R<br />
+                                    Albuquerque, NM 87110<br />
+                                    United States
+                                </p>
+                                {/* Optional link to Google Maps */}
+                                <a
+                                    href="https://maps.google.com/?q=1209+Mountain+Road+PI+NE+Ste+R+Albuquerque+NM+87110"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 mt-4 text-sm text-[#FF7537] hover:text-[#022F2B] transition-colors font-medium"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                    View on Google Maps
+                                </a>
+                            </div>
+                        </motion.div>
 
                         {/* Business Hours Card */}
                         <motion.div
@@ -281,7 +316,7 @@ const Contact = () => {
                             </div>
                         </motion.div>
 
-                        {/* Social Links Card - Added Fiverr & Mail Icons */}
+                        {/* Social Links Card */}
                         <motion.div
                             className="rounded-3xl p-6 md:p-8 border border-gray-200"
                             variants={itemVariants}
