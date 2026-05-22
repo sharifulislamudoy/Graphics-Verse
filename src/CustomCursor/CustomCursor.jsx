@@ -46,27 +46,26 @@ const CustomCursor = () => {
         el.addEventListener('mouseleave', () => setCursorVariant('default'));
       });
 
-      // Download / CTA buttons (adjust selector to match your project)
-      const ctaButton = document.querySelector('[class*="bg-gradient-to-r"], .cta-button');
-      if (ctaButton) {
-        ctaButton.addEventListener('mouseenter', () => setCursorVariant('download'));
-        ctaButton.addEventListener('mouseleave', () => setCursorVariant('default'));
-      }
+      // CTA / Download buttons
+      document.querySelectorAll('[class*="bg-gradient"], .cta-button').forEach(el => {
+        el.addEventListener('mouseenter', () => setCursorVariant('download'));
+        el.addEventListener('mouseleave', () => setCursorVariant('default'));
+      });
 
-      // Card / text blocks
-      document.querySelectorAll('.bg-gray-800, .rounded-2xl, .card').forEach(el => {
+      // Cards / Sections
+      document.querySelectorAll('.card, .rounded-2xl, .bg-gray-800').forEach(el => {
         el.addEventListener('mouseenter', () => setCursorVariant('text'));
         el.addEventListener('mouseleave', () => setCursorVariant('default'));
       });
 
-      // Tech / interactive tiles
-      document.querySelectorAll('[class*="p-3"][class*="bg-"], .tech-icon').forEach(el => {
+      // Tech / Interactive elements
+      document.querySelectorAll('.tech-icon, [class*="p-3"]').forEach(el => {
         el.addEventListener('mouseenter', () => setCursorVariant('tech'));
         el.addEventListener('mouseleave', () => setCursorVariant('default'));
       });
     };
 
-    setTimeout(enhanceHoverEffects, 1000);
+    setTimeout(enhanceHoverEffects, 500);
 
     return () => {
       window.removeEventListener('mousemove', mouseMove);
@@ -77,212 +76,234 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // Brand colors from About section
-  const brandGreen = '#DEF29B';   // Inner fill
-  const brandOrange = '#FF7537';  // Outer border / accent
+  // ===== BRAND COLORS FROM YOUR LOGO =====
+  const darkBlue = '#061ec3';
+  const lightBlue = '#067bff';
+  const yellow = '#ffcf00';
 
   const variants = {
     default: {
-      x: mousePosition.x - 8,
-      y: mousePosition.y - 8,
-      scale: isClicking ? 0.8 : 1,
-      backgroundColor: brandGreen,           // Green inner
-      border: `2px solid ${brandOrange}`,    // Orange outer border
-      mixBlendMode: 'normal',
-    },
-    link: {
-      x: mousePosition.x - 12,
-      y: mousePosition.y - 12,
-      scale: isClicking ? 1.1 : 1.3,
-      backgroundColor: brandGreen,
-      border: `3px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
-    },
-    button: {
-      x: mousePosition.x - 15,
-      y: mousePosition.y - 15,
-      scale: isClicking ? 1.4 : 1.6,
-      backgroundColor: brandGreen,
-      border: `3px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
-    },
-    input: {
-      x: mousePosition.x - 6,
-      y: mousePosition.y - 6,
-      scale: isClicking ? 0.9 : 1.1,
-      backgroundColor: brandGreen,
-      border: `2px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
-    },
-    download: {
-      x: mousePosition.x - 20,
-      y: mousePosition.y - 20,
-      scale: isClicking ? 1.8 : 2,
-      backgroundColor: brandGreen,
-      border: `4px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
-    },
-    text: {
       x: mousePosition.x - 10,
       y: mousePosition.y - 10,
-      scale: isClicking ? 1 : 1.2,
-      backgroundColor: brandGreen,
-      border: `2px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
+      scale: isClicking ? 0.85 : 1,
+      background:
+        'linear-gradient(135deg, #ffcf00 0%, #067bff 100%)',
+      border: `2px solid ${darkBlue}`,
+      boxShadow: `0 0 15px ${lightBlue}`,
     },
-    tech: {
+
+    link: {
       x: mousePosition.x - 14,
       y: mousePosition.y - 14,
-      scale: isClicking ? 1.2 : 1.4,
-      backgroundColor: brandGreen,
-      border: `3px solid ${brandOrange}`,
-      mixBlendMode: 'normal',
+      scale: isClicking ? 1.1 : 1.35,
+      background:
+        'linear-gradient(135deg, #ffcf00 0%, #067bff 100%)',
+      border: `3px solid ${darkBlue}`,
+      boxShadow: `0 0 20px ${lightBlue}`,
+    },
+
+    button: {
+      x: mousePosition.x - 18,
+      y: mousePosition.y - 18,
+      scale: isClicking ? 1.3 : 1.6,
+      background:
+        'linear-gradient(135deg, #ffcf00 0%, #067bff 100%)',
+      border: `3px solid ${darkBlue}`,
+      boxShadow: `0 0 25px ${lightBlue}`,
+    },
+
+    input: {
+      x: mousePosition.x - 8,
+      y: mousePosition.y - 8,
+      scale: isClicking ? 0.9 : 1.1,
+      background: lightBlue,
+      border: `2px solid ${yellow}`,
+      boxShadow: `0 0 18px ${lightBlue}`,
+    },
+
+    download: {
+      x: mousePosition.x - 24,
+      y: mousePosition.y - 24,
+      scale: isClicking ? 1.8 : 2.1,
+      background:
+        'linear-gradient(135deg, #ffcf00 0%, #067bff 100%)',
+      border: `4px solid ${yellow}`,
+      boxShadow: `
+        0 0 30px ${lightBlue},
+        0 0 50px ${yellow}
+      `,
+    },
+
+    text: {
+      x: mousePosition.x - 12,
+      y: mousePosition.y - 12,
+      scale: isClicking ? 1 : 1.25,
+      background: lightBlue,
+      border: `2px solid ${yellow}`,
+      boxShadow: `0 0 18px ${lightBlue}`,
+    },
+
+    tech: {
+      x: mousePosition.x - 16,
+      y: mousePosition.y - 16,
+      scale: isClicking ? 1.2 : 1.5,
+      background:
+        'linear-gradient(135deg, #067bff 0%, #061ec3 100%)',
+      border: `3px solid ${yellow}`,
+      boxShadow: `
+        0 0 25px ${lightBlue},
+        0 0 40px ${darkBlue}
+      `,
     }
   };
 
-  // Hide cursor on mobile devices
+  // Hide on mobile
   if (typeof window !== 'undefined' && window.innerWidth <= 768) {
     return null;
   }
 
   return (
     <>
-      {/* Main cursor (green inner with orange border) */}
+      {/* Main Cursor */}
       <motion.div
         className="custom-cursor"
         variants={variants}
         animate={cursorVariant}
         transition={{
-          type: "spring",
-          damping: 15,
-          stiffness: 400,
+          type: 'spring',
+          damping: 18,
+          stiffness: 350,
           mass: 0.5
         }}
         style={{
           position: 'fixed',
           left: 0,
           top: 0,
-          width: '16px',
-          height: '16px',
+          width: '20px',
+          height: '20px',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 9999,
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.15s ease',
+          willChange: 'transform',
+          backdropFilter: 'blur(2px)',
         }}
       />
-      
-      {/* Cursor trail (orange, follows with lag) */}
+
+      {/* Cursor Trail */}
       <motion.div
         className="cursor-trail"
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
+          x: mousePosition.x - 5,
+          y: mousePosition.y - 5,
         }}
         transition={{
-          type: "spring",
-          damping: 25,
-          stiffness: 200,
+          type: 'spring',
+          damping: 28,
+          stiffness: 180,
           mass: 0.8
         }}
         style={{
           position: 'fixed',
           left: 0,
           top: 0,
-          width: '8px',
-          height: '8px',
-          backgroundColor: brandOrange, // Orange trail
+          width: '10px',
+          height: '10px',
+          background: `linear-gradient(135deg, ${yellow}, ${lightBlue})`,
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 9998,
-          opacity: isVisible ? 1 : 0,
-          transition: 'opacity 0.2s ease',
+          opacity: isVisible ? 0.9 : 0,
+          boxShadow: `0 0 15px ${lightBlue}`,
         }}
       />
 
-      {/* Additional ring effect for download state (orange pulse) */}
+      {/* Download Pulse Ring */}
       {cursorVariant === 'download' && (
         <motion.div
           className="cursor-ring"
           animate={{
-            x: mousePosition.x - 25,
-            y: mousePosition.y - 25,
-            scale: [1, 1.2, 1],
+            x: mousePosition.x - 30,
+            y: mousePosition.y - 30,
+            scale: [1, 1.4, 1],
+            opacity: [0.5, 0.2, 0.5],
           }}
           transition={{
-            duration: 2,
+            duration: 1.8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut'
           }}
           style={{
             position: 'fixed',
             left: 0,
             top: 0,
-            width: '50px',
-            height: '50px',
-            border: `2px solid ${brandOrange}`,
+            width: '60px',
+            height: '60px',
+            border: `2px solid ${yellow}`,
             borderRadius: '50%',
             pointerEvents: 'none',
             zIndex: 9997,
-            opacity: isVisible ? 0.4 : 0,
+            boxShadow: `0 0 30px ${yellow}`,
           }}
         />
       )}
 
-      {/* Pulse effect for tech icons (green pulse) */}
+      {/* Tech Glow Pulse */}
       {cursorVariant === 'tech' && (
         <motion.div
           className="tech-pulse"
           animate={{
-            x: mousePosition.x - 20,
-            y: mousePosition.y - 20,
-            scale: [1, 1.5, 1],
+            x: mousePosition.x - 24,
+            y: mousePosition.y - 24,
+            scale: [1, 1.6, 1],
+            opacity: [0.4, 0, 0.4],
           }}
           transition={{
             duration: 1.5,
             repeat: Infinity,
-            ease: "easeOut"
+            ease: 'easeOut'
           }}
           style={{
             position: 'fixed',
             left: 0,
             top: 0,
-            width: '40px',
-            height: '40px',
-            border: `2px solid ${brandGreen}`,
+            width: '48px',
+            height: '48px',
+            border: `2px solid ${lightBlue}`,
             borderRadius: '50%',
             pointerEvents: 'none',
             zIndex: 9996,
-            opacity: isVisible ? 0.3 : 0,
+            boxShadow: `0 0 30px ${lightBlue}`,
           }}
         />
       )}
 
-      {/* Central precision dot (orange) */}
+      {/* Precision Dot */}
       <motion.div
         className="cursor-dot"
         animate={{
-          x: mousePosition.x - 2,
-          y: mousePosition.y - 2,
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           damping: 30,
-          stiffness: 300,
-          mass: 0.5
+          stiffness: 400,
+          mass: 0.3
         }}
         style={{
           position: 'fixed',
           left: 0,
           top: 0,
-          width: '4px',
-          height: '4px',
-          backgroundColor: brandOrange, // Orange dot for contrast
+          width: '6px',
+          height: '6px',
+          backgroundColor: yellow,
           borderRadius: '50%',
           pointerEvents: 'none',
-          zIndex: 9999,
+          zIndex: 10000,
           opacity: isVisible ? 1 : 0,
-          transition: 'opacity 0.1s ease',
+          boxShadow: `0 0 12px ${yellow}`,
         }}
       />
 
@@ -290,28 +311,23 @@ const CustomCursor = () => {
         * {
           cursor: none !important;
         }
-        
-        html, body, a, button, input, textarea, [role="button"] {
+
+        html,
+        body,
+        a,
+        button,
+        input,
+        textarea,
+        [role='button'] {
           cursor: none !important;
         }
 
         .custom-cursor {
-          filter: drop-shadow(0 0 8px rgba(255, 117, 55, 0.3));
-          will-change: transform;
-          backdrop-filter: blur(1px);
+          mix-blend-mode: normal;
         }
 
-        /* Glow effects for outer orange border */
-        .custom-cursor[style*="border: 2px solid rgb(255, 117, 55)"] {
-          box-shadow: 0 0 15px rgba(255, 117, 55, 0.4);
-        }
-
-        .custom-cursor[style*="border: 3px solid rgb(255, 117, 55)"] {
-          box-shadow: 0 0 20px rgba(255, 117, 55, 0.5);
-        }
-
-        .custom-cursor[style*="border: 4px solid rgb(255, 117, 55)"] {
-          box-shadow: 0 0 25px rgba(255, 117, 55, 0.6);
+        body {
+          overflow-x: hidden;
         }
       `}</style>
     </>

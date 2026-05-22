@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink, useNavigate } from "react-router";
 
@@ -19,9 +19,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -31,81 +33,165 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`sticky top-0 z-50 px-4 py-4 md:px-6 flex items-center justify-between w-full relative transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md" : "bg-transparent"
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+        scrolled
+          ? " backdrop-blur-xl  border-blue-500/20 shadow-2xl shadow-blue-500/10"
+          : "bg-transparent"
       }`}
     >
-      {/* Logo */}
-      <NavLink to="/" className="text-4xl font-bold text-[#00332C]">
-        GV.
-      </NavLink>
+      {/* Glow Effects */}
+      <div className="absolute top-0 left-10 w-40 h-40 bg-blue-600/20 blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-10 w-40 h-40 bg-yellow-400/20 blur-[100px] pointer-events-none"></div>
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex items-center gap-6">
-        <div className="flex items-center bg-[#DEF29B] px-8 py-3 rounded-full gap-8">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.path}
-              className={({ isActive }) =>
-                `text-xl capitalize ${
-                  isActive ? "text-[#FF914D]" : "text-black hover:text-[#FF914D]"
-                }`
-              }
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
-        <button
-          onClick={handleHireMe}
-          className="bg-[#012F2B] text-white px-10 py-3 rounded-full font-semibold hover:bg-[#022721] transition text-xl"
-        >
-          Hire Me!
-        </button>
-      </div>
-
-      {/* Mobile Menu Button */}
-      <div className="md:hidden flex items-center bg-[#E2F89D] pr-4 py-1 rounded-full pl-40">
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-white bg-[#FF7C3E] w-10 h-10 flex items-center justify-center rounded-full text-2xl"
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      <AnimatePresence>
-        {menuOpen && (
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-1 flex items-center justify-between relative">
+        {/* Logo */}
+        <NavLink to="/" className="">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute top-20 left-0 w-full bg-white shadow-md rounded-md z-50 overflow-hidden"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            className=""
           >
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-16 h-16 md:w-18 md:h-18 lg:h-22 lg:w-22 object-contain rounded-xl "
+            />
+          </motion.div>
+        </NavLink>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-5 ">
+          {/* Nav Links Container */}
+          <div className="relative  flex items-center gap-2 bg-white/5 border border-gray-500/30 backdrop-blur-xl p-1 rounded-full ">
+
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
-                onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block w-full text-left px-6 py-3 font-medium capitalize ${
+                  `relative px-5 py-2 rounded-full text-[17px] font-medium capitalize transition-all duration-300 overflow-hidden group ${
                     isActive
-                      ? "bg-[#FF7C3E] text-white"
-                      : "text-[#00332C] hover:bg-[#FF7C3E] hover:text-white"
+                      ? "text-white"
+                      : "text-gray-500 hover:text-black"
                   }`
                 }
               >
-                {item.name}
+                {({ isActive }) => (
+                  <>
+                    {/* Active Background */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-active-pill"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-blue-600 shadow-lg"
+                        transition={{
+                          type: "spring",
+                          bounce: 0.25,
+                          duration: 0.6,
+                        }}
+                      />
+                    )}
+
+                    {/* Hover Glow */}
+                    <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition duration-300"></span>
+
+                    <span className="relative z-10">{item.name}</span>
+                  </>
+                )}
               </NavLink>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+          </div>
+
+          {/* Hire Me Button */}
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 0px 25px rgba(37,99,235,0.5)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleHireMe}
+            className="group relative overflow-hidden bg-gradient-to-r from-yellow-400 via-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-xl"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Hire Me
+              <FiArrowRight className="group-hover:translate-x-1 transition duration-300" />
+            </span>
+
+            {/* Shine Animation */}
+            <span className="absolute top-0 left-[-120%] w-full h-full bg-white/20 skew-x-12 group-hover:left-[120%] transition-all duration-1000"></span>
+          </motion.button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-blue-600 text-white text-2xl shadow-lg"
+          >
+            <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-lg"></div>
+
+            <span className="relative z-10">
+              {menuOpen ? <FiX /> : <FiMenu />}
+            </span>
+          </motion.button>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -30, scale: 0.95 }}
+              transition={{ duration: 0.35 }}
+              className="absolute top-24 left-4 right-4 bg-[#0B1020]/95 backdrop-blur-2xl border border-blue-500/20 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.25)] md:hidden"
+            >
+              {/* Top Glow */}
+              <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-r from-yellow-400/10 via-blue-500/10 to-blue-700/10 blur-2xl"></div>
+
+              <div className="relative flex flex-col p-5 gap-2">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.07 }}
+                  >
+                    <NavLink
+                      to={item.path}
+                      onClick={() => setMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center justify-between px-5 py-4 rounded-2xl capitalize text-lg font-medium transition-all duration-300 ${
+                          isActive
+                            ? "bg-gradient-to-r from-yellow-400 to-blue-600 text-white"
+                            : "hover:bg-gradient-to-r from-yellow-400 to-blue-600 text-white"
+                        }`
+                      }
+                    >
+                      {item.name}
+                      <FiArrowRight />
+                    </NavLink>
+                  </motion.div>
+                ))}
+
+                {/* Mobile Hire Me */}
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleHireMe}
+                  className="mt-3 bg-gradient-to-r from-yellow-400 via-blue-500 to-blue-700 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg"
+                >
+                  Hire Me
+                </motion.button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.nav>
   );
 };
 
