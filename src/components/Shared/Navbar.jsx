@@ -45,9 +45,9 @@ const Navbar = () => {
     >
       {/* Glow Effects */}
       <div className="absolute top-0 left-10 w-40 h-40 bg-blue-600/20 blur-[100px] pointer-events-none"></div>
-      <div className="absolute top-0 right-10 w-40 h-40 bg-yellow-400/20 blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-10 w-40 h-40 bg-blue-400/20 blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-1 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6  flex items-center justify-between relative">
         {/* Logo */}
         <NavLink to="/" className="">
           <motion.div
@@ -86,7 +86,7 @@ const Navbar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="navbar-active-pill"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-blue-600 shadow-lg"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg"
                         transition={{
                           type: "spring",
                           bounce: 0.25,
@@ -113,7 +113,7 @@ const Navbar = () => {
             }}
             whileTap={{ scale: 0.95 }}
             onClick={handleHireMe}
-            className="group relative overflow-hidden bg-gradient-to-r from-yellow-400 via-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-xl"
+            className="group relative overflow-hidden bg-gradient-to-r from-blue-500 via-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-xl"
           >
             <span className="relative z-10 flex items-center gap-2">
               Hire Me
@@ -130,7 +130,7 @@ const Navbar = () => {
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setMenuOpen(!menuOpen)}
-            className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-blue-600 text-white text-2xl shadow-lg"
+            className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white text-2xl shadow-lg"
           >
             <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-lg"></div>
 
@@ -148,10 +148,10 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -30, scale: 0.95 }}
               transition={{ duration: 0.35 }}
-              className="absolute top-24 left-4 right-4 bg-[#0B1020]/95 backdrop-blur-2xl border border-blue-500/20 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.25)] md:hidden"
+              className="absolute top-24 left-4 right-4 bg-transparent backdrop-blur-xl border border-blue-500/20 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.25)] md:hidden"
             >
               {/* Top Glow */}
-              <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-r from-yellow-400/10 via-blue-500/10 to-blue-700/10 blur-2xl"></div>
+              <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-r from-blue-500/10 via-blue-500/10 to-blue-700/10 blur-2xl"></div>
 
               <div className="relative flex flex-col p-5 gap-2">
                 {navItems.map((item, index) => (
@@ -167,8 +167,8 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         `flex items-center justify-between px-5 py-4 rounded-2xl capitalize text-lg font-medium transition-all duration-300 ${
                           isActive
-                            ? "bg-gradient-to-r from-yellow-400 to-blue-600 text-white"
-                            : "hover:bg-gradient-to-r from-yellow-400 to-blue-600 text-white"
+                            ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+                            : "hover:bg-gradient-to-r from-blue-500 to-blue-600 text-gray-800"
                         }`
                       }
                     >
@@ -182,7 +182,7 @@ const Navbar = () => {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={handleHireMe}
-                  className="mt-3 bg-gradient-to-r from-yellow-400 via-blue-500 to-blue-700 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg"
+                  className="mt-3 bg-gradient-to-r from-blue-500 via-blue-500 to-blue-700 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg"
                 >
                   Hire Me
                 </motion.button>

@@ -59,61 +59,64 @@ const About = () => {
     visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
   };
 
-  // Improved Skeleton component that matches the #DEF29B background
+  // Floating animation for images
+  const floatingAnimation = {
+    y: [0, -8, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut",
+    },
+  };
+
+  // Skeleton Loader with lighter blue for dark background
   const Skeleton = () => (
     <div className="animate-pulse">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        {/* Left column skeleton */}
         <div>
-          <div className="h-10 sm:h-12 lg:h-14 bg-[#b8d46a] rounded w-3/4 mb-6"></div>
+          <div className="h-10 sm:h-12 lg:h-14 bg-blue-300/50 rounded w-3/4 mb-6"></div>
           <div className="space-y-3">
-            <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
-            <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
-            <div className="h-4 bg-[#b8d46a] rounded w-4/5"></div>
-            <div className="h-4 bg-[#b8d46a] rounded w-3/4"></div>
+            <div className="h-4 bg-blue-300/50 rounded w-full"></div>
+            <div className="h-4 bg-blue-300/50 rounded w-5/6"></div>
+            <div className="h-4 bg-blue-300/50 rounded w-4/5"></div>
+            <div className="h-4 bg-blue-300/50 rounded w-3/4"></div>
           </div>
         </div>
-
-        {/* Right column skeleton (Mission & Vision) */}
         <div className="space-y-8 lg:space-y-13">
-          {/* Mission skeleton */}
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-15">
             <div className="w-full md:w-1/2">
-              <div className="rounded-2xl bg-[#b8d46a] h-48 md:h-56 w-full"></div>
+              <div className="rounded-2xl bg-blue-300/50 h-48 md:h-56 w-full"></div>
             </div>
             <div className="w-full md:w-1/2">
-              <div className="h-7 bg-[#b8d46a] rounded w-20 mb-3"></div>
+              <div className="h-7 bg-blue-300/50 rounded w-20 mb-3"></div>
               <div className="space-y-2">
-                <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
-                <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
-                <div className="h-4 bg-[#b8d46a] rounded w-4/5"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-full"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-5/6"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-4/5"></div>
               </div>
             </div>
           </div>
-
-          {/* Vision skeleton */}
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-15">
             <div className="w-full md:w-1/2">
-              <div className="rounded-2xl bg-[#b8d46a] h-48 md:h-56 w-full"></div>
+              <div className="rounded-2xl bg-blue-300/50 h-48 md:h-56 w-full"></div>
             </div>
             <div className="w-full md:w-1/2">
-              <div className="h-7 bg-[#b8d46a] rounded w-16 mb-3"></div>
+              <div className="h-7 bg-blue-300/50 rounded w-16 mb-3"></div>
               <div className="space-y-2">
-                <div className="h-4 bg-[#b8d46a] rounded w-full"></div>
-                <div className="h-4 bg-[#b8d46a] rounded w-5/6"></div>
-                <div className="h-4 bg-[#b8d46a] rounded w-3/4"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-full"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-5/6"></div>
+                <div className="h-4 bg-blue-300/50 rounded w-3/4"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Stats skeleton */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 mt-12 md:mt-20">
         {[1, 2, 3, 4].map((i) => (
           <div key={i} className="text-center">
-            <div className="h-8 md:h-12 bg-[#b8d46a] rounded w-16 mx-auto mb-2"></div>
-            <div className="h-4 bg-[#b8d46a] rounded w-20 mx-auto"></div>
+            <div className="h-8 md:h-12 bg-blue-300/50 rounded w-16 mx-auto mb-2"></div>
+            <div className="h-4 bg-blue-300/50 rounded w-20 mx-auto"></div>
           </div>
         ))}
       </div>
@@ -121,100 +124,99 @@ const About = () => {
   );
 
   return (
-    <div id="about" className="px-4 py-4 md:px-6 w-full mt-15">
-      <motion.div
-        ref={ref}
-        className="rounded-2xl md:rounded-[3rem] bg-[#DEF29B] p-6 md:p-15"
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {loading ? (
-          <Skeleton />
-        ) : (
-          <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              <motion.div variants={itemVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B]">
-                  About <br />Graphic Verse LLC
-                </h2>
-                <p className="text-gray-700 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
-                  {aboutData.brandDescription}
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="space-y-8 lg:space-y-13"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                {/* Mission */}
+    <div id="about" className="w-full py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <motion.div
+          ref={ref}
+          className="rounded-2xl md:rounded-[3rem] bg-gradient-to-br from-blue-500 to-blue-700 p-6 md:p-15 shadow-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {loading ? (
+            <Skeleton />
+          ) : (
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 <motion.div
-                  className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
                   variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
                 >
-                  <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
-                    <img
-                      src={aboutData.mission.imageUrl || defaultImage1}
-                      alt="mission illustration"
-                      className="rounded-2xl w-full h-auto object-cover"
-                    />
-                  </motion.div>
-                  <div className="w-full md:w-1/2 text-center md:text-left">
-                    <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.mission.title}</h4>
-                    <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
-                      {aboutData.mission.description}
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* Vision */}
-                <motion.div
-                  className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <motion.div className="w-full md:w-1/2" whileHover={{ scale: 1.05 }}>
-                    <img
-                      src={aboutData.vision.imageUrl || defaultImage2}
-                      alt="vision illustration"
-                      className="rounded-2xl w-full h-auto object-cover"
-                    />
-                  </motion.div>
-                  <div className="w-full md:w-1/2 text-center md:text-left">
-                    <h4 className="text-2xl sm:text-3xl font-semibold">{aboutData.vision.title}</h4>
-                    <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
-                      {aboutData.vision.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-
-            {/* Stats */}
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 mt-12 md:mt-20"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-            >
-              {aboutData.stats.map((stat, index) => (
-                <motion.div key={index} variants={statVariants} whileHover={{ y: -5 }} className="text-center">
-                  <p className="text-2xl md:text-5xl text-[#FF7537] font-semibold">
-                    <CountUp start={0} end={stat.value} duration={5} />
-                    {stat.suffix}
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    About <br />Graphic Verse LLC
+                  </h2>
+                  <p className="text-blue-50 text-base sm:text-lg md:text-xl mt-6 leading-relaxed">
+                    {aboutData.brandDescription}
                   </p>
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-1 md:mt-2">{stat.label}</p>
                 </motion.div>
-              ))}
-            </motion.div>
-          </>
-        )}
-      </motion.div>
+
+                <motion.div
+                  className="space-y-8 lg:space-y-13"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                >
+                  {/* Mission */}
+                  <motion.div
+                    className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="w-full md:w-1/2 relative group"
+                      animate={floatingAnimation}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="absolute -inset-2 bg-white/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                      <img
+                        src={aboutData.mission.imageUrl || defaultImage1}
+                        alt="mission illustration"
+                        className="rounded-2xl w-full h-auto object-cover shadow-xl relative z-10"
+                      />
+                    </motion.div>
+                    <div className="w-full md:w-1/2 text-center md:text-left">
+                      <h4 className="text-2xl sm:text-3xl font-semibold text-white">{aboutData.mission.title}</h4>
+                      <p className="text-blue-50 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
+                        {aboutData.mission.description}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Vision */}
+                  <motion.div
+                    className="flex flex-col md:flex-row items-center gap-6 md:gap-15"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="w-full md:w-1/2 relative group"
+                      animate={floatingAnimation}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="absolute -inset-2 bg-white/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                      <img
+                        src={aboutData.vision.imageUrl || defaultImage2}
+                        alt="vision illustration"
+                        className="rounded-2xl w-full h-auto object-cover shadow-xl relative z-10"
+                      />
+                    </motion.div>
+                    <div className="w-full md:w-1/2 text-center md:text-left">
+                      <h4 className="text-2xl sm:text-3xl font-semibold text-white">{aboutData.vision.title}</h4>
+                      <p className="text-blue-50 text-base sm:text-lg md:text-xl mt-3 md:mt-5">
+                        {aboutData.vision.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+            </>
+          )}
+        </motion.div>
+      </div>
     </div>
   );
 };

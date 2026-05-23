@@ -41,7 +41,7 @@ const Portfolio = () => {
       category: "Arte e Design",
       extraImages: ["/images/05.png" , "/images/06.png", "/images/07.png", "/images/08.png", "/images/09.png", "/images/10.png", "/images/11.png", "/images/12.png", "/images/13.png"],
     },
-{
+    {
       slug: "sohaping-a-brand-that-stands-out-and-resonates",
       heading: "Social Media Design | Webinar Campaign 2024",
       description: "We recently completed a clean and compelling set of social media ad creatives for a leading webinar event company. ",
@@ -56,59 +56,61 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="px-4 py-4 md:px-6 w-full mt-15">
-      <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-        <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B] text-center"
-          variants={cardVariants}
-        >
-          All Works
-        </motion.h2>
-        <motion.p
-          className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5 text-center md:w-[60%] mx-auto"
-          variants={cardVariants}
-        >
-          A collection of our finest projects. Each one tells a story of
-          creativity and strategic thinking.
-        </motion.p>
+    <div className="w-full py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-900 to-blue-800 bg-clip-text text-transparent text-center"
+            variants={cardVariants}
+          >
+            All Works
+          </motion.h2>
+          <motion.p
+            className="text-gray-600 text-base sm:text-lg md:text-xl mt-3 md:mt-5 text-center md:w-[60%] mx-auto"
+            variants={cardVariants}
+          >
+            A collection of our finest projects. Each one tells a story of
+            creativity and strategic thinking.
+          </motion.p>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10"
-          variants={containerVariants}
-        >
-          {portfolioData.map((item) => (
-            <motion.div
-              key={item.slug}
-              className="flex flex-col group"
-              variants={cardVariants}
-              whileHover={{ y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="overflow-hidden rounded-3xl">
-                <img
-                  src={item.image}
-                  alt={item.heading}
-                  className="rounded-3xl w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="mt-4 md:mt-5">
-                <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold line-clamp-2">
-                  {item.heading}
-                </h4>
-                <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-2 md:mt-5 line-clamp-2">
-                  {item.description}
-                </p>
-                <Link
-                  to={`/portfolio/${item.slug}`}
-                  className="inline-block text-[#FF7537] font-semibold text-sm sm:text-base md:text-lg mt-3 md:mt-5 hover:text-[#022F2B] transition-colors"
-                >
-                  Learn More →
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10"
+            variants={containerVariants}
+          >
+            {portfolioData.map((item) => (
+              <motion.div
+                key={item.slug}
+                className="flex flex-col group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                variants={cardVariants}
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.heading}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 md:p-5">
+                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 line-clamp-2">
+                    {item.heading}
+                  </h4>
+                  <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-2 md:mt-3 line-clamp-2">
+                    {item.description}
+                  </p>
+                  <Link
+                    to={`/portfolio/${item.slug}`}
+                    className="inline-block text-blue-600 font-semibold text-sm sm:text-base md:text-lg mt-3 md:mt-4 hover:text-blue-800 transition-colors"
+                  >
+                    Learn More →
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };

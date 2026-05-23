@@ -33,59 +33,63 @@ const ClientReview = () => {
   };
 
   return (
-    <div className="px-4 py-4 md:px-6 w-full mt-15">
-      <motion.div
-        ref={ref}
-        className="rounded-2xl md:rounded-[3rem] bg-[#DEF29B] p-6 md:p-15"
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#022F2B] text-center"
-          variants={cardVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          What My Clients Say
-        </motion.h2>
-
+    <div className="w-full py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-13 mt-12 md:mt-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          ref={ref}
+          className="rounded-2xl md:rounded-[3rem] bg-gradient-to-br from-blue-500 to-blue-700 p-6 md:p-15 shadow-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {reviewsData.map((review) => (
-            <motion.div
-              key={review.name}
-              className="flex flex-col md:flex-row items-stretch gap-6 md:gap-10 bg-white/50 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-shadow duration-300"
-              variants={cardVariants}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              {/* Fixed-size image container */}
-              <div className="flex-shrink-0 flex justify-center">
-                <img
-                  src={imageMap[review.image]}
-                  alt={review.name}
-                  className="rounded-2xl w-40 h-40 md:w-48 md:h-48 object-cover"
-                />
-              </div>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center"
+            variants={cardVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            What My Clients Say
+          </motion.h2>
 
-              {/* Text container – takes remaining space and centers vertically */}
-              <div className="flex flex-col justify-center text-center md:text-left flex-1">
-                <h4 className="text-2xl sm:text-3xl font-semibold">{review.name}</h4>
-                <div className="mt-3">
-                  <i className="text-gray-600 text-base text-lg block">
-                    "{review.review}"
-                  </i>
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-13 mt-12 md:mt-20"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {reviewsData.map((review) => (
+              <motion.div
+                key={review.name}
+                className="flex flex-col md:flex-row items-stretch gap-6 md:gap-10 bg-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 border border-white/20"
+                variants={cardVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                {/* Fixed-size image container */}
+                <div className="flex-shrink-0 flex justify-center">
+                  <img
+                    src={imageMap[review.image]}
+                    alt={review.name}
+                    className="rounded-2xl w-40 h-40 md:w-48 md:h-48 object-cover border-2 border-white/30"
+                  />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Text container – takes remaining space and centers vertically */}
+                <div className="flex flex-col justify-center text-center md:text-left flex-1">
+                  <h4 className="text-2xl sm:text-3xl font-semibold text-white">
+                    {review.name}
+                  </h4>
+                  <div className="mt-3">
+                    <i className="text-blue-50 text-base md:text-lg block">
+                      "{review.review}"
+                    </i>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };

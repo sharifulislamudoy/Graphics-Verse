@@ -85,8 +85,8 @@ const PortfolioDetail = () => {
   const totalImages = project.extraImages?.length || 0;
 
   return (
-    <>
-      <div className="px-4 py-8 md:px-6 max-w-6xl mx-auto mt-15">
+    <div className="w-full py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const PortfolioDetail = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h1 className="text-3xl md:text-5xl font-semibold text-[#022F2B] mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-900 to-blue-800 bg-clip-text text-transparent mb-4">
                 {project.heading}
               </h1>
               <p className="text-gray-600 text-lg md:text-xl mb-6">
@@ -134,22 +134,22 @@ const PortfolioDetail = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-[#FF7537]">Category:</span>
-                  <span>{project.category}</span>
+                  <span className="font-semibold text-blue-600">Category:</span>
+                  <span className="text-gray-700">{project.category}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-[#FF7537]">Duration:</span>
-                  <span>{project.duration}</span>
+                  <span className="font-semibold text-blue-600">Duration:</span>
+                  <span className="text-gray-700">{project.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-[#FF7537]">Price Range:</span>
-                  <span>{project.priceRange}</span>
+                  <span className="font-semibold text-blue-600">Price Range:</span>
+                  <span className="text-gray-700">{project.priceRange}</span>
                 </div>
               </div>
             </div>
-            <div className="bg-[#DEF29B] p-6 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-4">Project Highlights</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-2xl shadow-lg">
+              <h3 className="text-2xl font-semibold text-white mb-4">Project Highlights</h3>
+              <ul className="list-disc list-inside space-y-2 text-blue-50">
                 <li>User-centered design approach</li>
                 <li>Collaborative development</li>
                 <li>Delivered on time and within budget</li>
@@ -246,7 +246,7 @@ const PortfolioDetail = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
